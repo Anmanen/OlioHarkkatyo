@@ -9,6 +9,8 @@ public class Lutemon {
     protected int health;
     protected int maxHealth;
     protected int id;
+
+    protected int experience;
     private int idCounter;
 
     public Lutemon(String name, String color, int defence, int attack, int maxHealth) {
@@ -45,5 +47,9 @@ public class Lutemon {
 
     public int getId() {
         return id;
+    }
+
+    public int getExperience() {
+        return experience;
     }
 }
