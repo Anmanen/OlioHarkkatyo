@@ -12,6 +12,18 @@
         android:theme="@style/Theme.Lutemon"
         tools:targetApi="31">
         <activity
+            android:name=".FightActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransferLutemonsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListLutemonsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddLutemonActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

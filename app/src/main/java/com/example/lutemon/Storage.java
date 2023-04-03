@@ -26,7 +26,19 @@ public class Storage {
         return lutemons;
     }
 
+    public Lutemon getLutemon(int id){
+        return lutemons.get(id);
+    }
+
     public void listLutemons(){
+
+    }
+
+    public void loadLutemons(){
+
+    }
+
+    public void saveLutemon(){
 
     }
 }
