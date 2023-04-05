@@ -11,14 +11,13 @@ public class Lutemon {
     protected int id;
 
     protected int experience;
-    private int idCounter;
+    private static int idCounter;
 
-    public Lutemon(String name, String color, int defence, int attack, int maxHealth) {
+    public Lutemon(String name, String color) {
         this.name = name;
         this.color = color;
-        this.defence = defence;
-        this.attack = attack;
-        this.maxHealth = maxHealth;
+        this.id = idCounter;
+        idCounter++;
     }
 
     public String getName() {
@@ -49,6 +48,9 @@ public class Lutemon {
         return id;
     }
 
+    public int getIdCounter() {
+        return idCounter;
+    }
     public int getExperience() {
         return experience;
     }

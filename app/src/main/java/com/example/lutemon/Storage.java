@@ -6,7 +6,7 @@ public class Storage {
 
     protected String name;
     protected Lutemon lutemon;
-    private HashMap<Integer, Lutemon> lutemons;
+    private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
     private static Storage storage;
 
     private Storage(){
@@ -14,6 +14,9 @@ public class Storage {
     }
 
     public static Storage getInstance(){
+        if (storage == null){
+            storage = new Storage();
+        }
         return storage;
     }
 
