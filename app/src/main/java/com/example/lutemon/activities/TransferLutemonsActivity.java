@@ -1,10 +1,12 @@
-package com.example.lutemon;
+package com.example.lutemon.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
+import com.example.lutemon.R;
+import com.example.lutemon.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class TransferLutemonsActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.lutemon;
+package com.example.lutemon.domain;
 
 import java.util.HashMap;
 

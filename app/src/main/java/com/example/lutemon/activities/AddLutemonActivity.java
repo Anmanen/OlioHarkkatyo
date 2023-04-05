@@ -1,4 +1,4 @@
-package com.example.lutemon;
+package com.example.lutemon.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.example.lutemon.domain.Black;
+import com.example.lutemon.domain.Green;
+import com.example.lutemon.domain.Lutemon;
+import com.example.lutemon.domain.Orange;
+import com.example.lutemon.domain.Pink;
+import com.example.lutemon.R;
+import com.example.lutemon.domain.Storage;
+import com.example.lutemon.domain.White;
 
 public class AddLutemonActivity extends AppCompatActivity {
 

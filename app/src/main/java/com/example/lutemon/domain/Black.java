@@ -1,6 +1,8 @@
-package com.example.lutemon;
+package com.example.lutemon.domain;
 
-public class Black extends Lutemon{
+import com.example.lutemon.domain.Lutemon;
+
+public class Black extends Lutemon {
 
     private int attack = 9;
     private int defence = 0;

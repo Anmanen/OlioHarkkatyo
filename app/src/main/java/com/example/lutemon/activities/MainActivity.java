@@ -1,10 +1,12 @@
-package com.example.lutemon;
+package com.example.lutemon.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.lutemon.R;
 
 public class MainActivity extends AppCompatActivity {
 

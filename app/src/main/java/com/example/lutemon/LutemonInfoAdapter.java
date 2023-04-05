@@ -8,8 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lutemon.domain.Lutemon;
+
 import java.util.HashMap;
-import java.util.zip.Inflater;
 
 public class LutemonInfoAdapter extends RecyclerView.Adapter<LutemonInfoHolder> {
 

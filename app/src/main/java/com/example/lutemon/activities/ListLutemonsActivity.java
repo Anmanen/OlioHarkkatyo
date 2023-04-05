@@ -1,10 +1,14 @@
-package com.example.lutemon;
+package com.example.lutemon.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.lutemon.LutemonInfoAdapter;
+import com.example.lutemon.R;
+import com.example.lutemon.domain.Storage;
 
 public class ListLutemonsActivity extends AppCompatActivity {
 
