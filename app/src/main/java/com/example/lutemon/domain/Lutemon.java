@@ -1,5 +1,7 @@
 package com.example.lutemon.domain;
 
+import com.example.lutemon.Place;
+
 public class Lutemon {
 
     protected String name;
@@ -11,14 +13,18 @@ public class Lutemon {
     protected int id;
 
     protected int experience;
+    protected Place place;
     private static int idCounter;
 
     public Lutemon(String name, String color) {
         this.name = name;
         this.color = color;
+        this.place = Place.HOME;
         this.id = idCounter;
         idCounter++;
     }
+
+
 
     public String getName() {
         return name;
@@ -53,5 +59,13 @@ public class Lutemon {
     }
     public int getExperience() {
         return experience;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 }
