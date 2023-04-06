@@ -3,13 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
     tools:context=".fragments.HomeFragment">
 
 
     <TextView
+        android:id="@+id/txtLabelLutemons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home tab"
-        android:layout_centerInParent="true"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Valitse Lutemon:" />
+
+    <LinearLayout
+        android:id="@+id/llHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLabelLutemons"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLabelPlaces"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llHome"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Siirrä Lutemon:" />
+
+    <RadioGroup
+        android:id="@+id/rgHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLabelPlaces"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/rbHomeToTrain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treenikentälle" />
+
+        <RadioButton
+            android:id="@+id/rbHomeToFight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taistelukentälle" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnHomeTransfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgHome"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"
+        android:text="Siirrä" />
 
 </RelativeLayout>
