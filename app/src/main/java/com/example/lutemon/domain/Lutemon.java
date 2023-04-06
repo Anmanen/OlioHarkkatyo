@@ -2,7 +2,7 @@ package com.example.lutemon.domain;
 
 import com.example.lutemon.Place;
 
-public class Lutemon {
+public abstract class Lutemon {
 
     protected String name;
     protected String color;
@@ -14,6 +14,10 @@ public class Lutemon {
 
     protected int experience;
     protected Place place;
+
+    protected int wins;
+
+    protected int defeats;
     private static int idCounter;
 
     public Lutemon(String name, String color) {
@@ -24,6 +28,7 @@ public class Lutemon {
         idCounter++;
     }
 
+    public abstract int getMaxHealth();
 
 
     public String getName() {
@@ -50,10 +55,6 @@ public class Lutemon {
         this.health = health;
     }
 
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
     public int getId() {
         return id;
     }
@@ -71,5 +72,21 @@ public class Lutemon {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getDefeats() {
+        return defeats;
+    }
+
+    public void setDefeats(int defeats) {
+        this.defeats = defeats;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.lutemon;
 
 import com.example.lutemon.domain.Lutemon;
+import com.example.lutemon.domain.Storage;
+import com.example.lutemon.domain.White;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,23 @@ public class BattleField {
             if (fighterB.getHealth() != 0) {
                 fighterA = attack(fighterB, fighterA);
             }
+        }
+
+        if (fighterA.getHealth() == 0){
+            Storage.getInstance().getLutemon(fighterA.getId()).setDefeats(fighterA.getDefeats()+1);
+            Storage.getInstance().getLutemon(fighterA.getId()).setPlace(Place.HOME);
+            Storage.getInstance().getLutemon(fighterA.getId()).setHealth(fighterA.getMaxHealth());
+            Storage.getInstance().getLutemon(fighterB.getId()).setPlace(Place.BATTLEFIELD);
+            Storage.getInstance().getLutemon(fighterB.getId()).setWins(fighterB.getWins()+1);
+        }
+
+
+        if (fighterB.getHealth() == 0){
+            Storage.getInstance().getLutemon(fighterB.getId()).setDefeats(fighterB.getDefeats()+1);
+            Storage.getInstance().getLutemon(fighterB.getId()).setPlace(Place.HOME);
+            Storage.getInstance().getLutemon(fighterB.getId()).setHealth(fighterB.getMaxHealth());
+            Storage.getInstance().getLutemon(fighterA.getId()).setPlace(Place.BATTLEFIELD);
+            Storage.getInstance().getLutemon(fighterA.getId()).setWins(fighterA.getWins()+1);
         }
     }
 

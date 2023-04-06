@@ -14,4 +14,9 @@ public class Green extends Lutemon {
         super.maxHealth = maxHealth;
         super.health = maxHealth;
     }
+
+    @Override
+    public int getMaxHealth() {
+        return maxHealth;
+    }
 }

@@ -1,7 +1,5 @@
 package com.example.lutemon.domain;
 
-import com.example.lutemon.domain.Lutemon;
-
 public class White extends Lutemon {
 
     private int attack = 5;
@@ -15,5 +13,9 @@ public class White extends Lutemon {
         super.maxHealth = maxHealth;
         super.health = maxHealth;
 
+    }
+    @Override
+    public int getMaxHealth() {
+        return maxHealth;
     }
 }
