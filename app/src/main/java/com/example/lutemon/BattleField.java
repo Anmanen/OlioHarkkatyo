@@ -32,7 +32,7 @@ public class BattleField {
             Storage.getInstance().getLutemon(fighterA.getId()).setPlace(Place.HOME);
             Storage.getInstance().getLutemon(fighterA.getId()).setHealth(fighterA.getMaxHealth());
             Storage.getInstance().getLutemon(fighterB.getId()).setPlace(Place.BATTLEFIELD);
-            Storage.getInstance().getLutemon(fighterB.getId()).setWins(fighterB.getWins()+1);
+            Storage.getInstance().getLutemon(fighterB.getId()).setExperience(fighterB.getExperience()+1);
         }
 
 
@@ -41,7 +41,7 @@ public class BattleField {
             Storage.getInstance().getLutemon(fighterB.getId()).setPlace(Place.HOME);
             Storage.getInstance().getLutemon(fighterB.getId()).setHealth(fighterB.getMaxHealth());
             Storage.getInstance().getLutemon(fighterA.getId()).setPlace(Place.BATTLEFIELD);
-            Storage.getInstance().getLutemon(fighterA.getId()).setWins(fighterA.getWins()+1);
+            Storage.getInstance().getLutemon(fighterA.getId()).setExperience(fighterA.getExperience()+1);
         }
     }
 

@@ -15,7 +15,6 @@ public abstract class Lutemon {
     protected int experience;
     protected Place place;
 
-    protected int wins;
 
     protected int defeats;
     private static int idCounter;
@@ -66,6 +65,10 @@ public abstract class Lutemon {
         return experience;
     }
 
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
     public Place getPlace() {
         return place;
     }
@@ -74,13 +77,6 @@ public abstract class Lutemon {
         this.place = place;
     }
 
-    public int getWins() {
-        return wins;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
 
     public int getDefeats() {
         return defeats;
