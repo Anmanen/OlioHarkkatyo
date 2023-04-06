@@ -46,6 +46,10 @@ public class Lutemon {
         return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public int getMaxHealth() {
         return maxHealth;
     }

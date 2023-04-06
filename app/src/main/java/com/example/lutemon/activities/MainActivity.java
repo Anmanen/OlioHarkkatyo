@@ -31,8 +31,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openFightView(View view){
-        Intent intent = new Intent(this, FightActivity.class);
-        startActivity(intent);
-    }
+
 }

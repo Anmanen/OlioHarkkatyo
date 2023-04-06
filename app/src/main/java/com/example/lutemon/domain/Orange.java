@@ -12,5 +12,6 @@ public class Orange extends Lutemon {
         super.attack = attack;
         super.defence = defence;
         super.maxHealth = maxHealth;
+        super.health = maxHealth;
     }
 }

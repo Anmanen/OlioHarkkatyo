@@ -10,17 +10,17 @@
     tools:context=".activities.FightActivity">
 
     <TextView
-        android:id="@+id/txtSelectTwo"
+        android:id="@+id/txtSelectedTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Valitse kaksi taistelijaa:" />
+        android:text="Valitut taistelijat:" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="390dp"
+        android:id="@+id/llTwoFighters"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/txtSelectTwo"
+        app:layout_constraintTop_toBottomOf="@+id/txtSelectedTwo"
         tools:layout_editor_absoluteX="1dp">
 
     </LinearLayout>
@@ -29,10 +29,11 @@
         android:id="@+id/btnFight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="startFighting"
         android:text="Aloita taistelu!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/llTwoFighters" />
 
     <TextView
         android:id="@+id/txtBattle"
@@ -42,5 +43,13 @@
         android:text="Taistelun kulku"
         app:layout_constraintTop_toBottomOf="@+id/btnFight"
         tools:layout_editor_absoluteX="1dp" />
+
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
