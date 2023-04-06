@@ -6,9 +6,68 @@
     tools:context=".fragments.BattleFieldFragment">
 
     <TextView
-        android:layout_width="wrap_content"
+    android:id="@+id/txtLabelLutemons"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:text="Valitse Lutemon:" />
+
+    <LinearLayout
+    android:id="@+id/llBattle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/txtLabelLutemons"
+    android:layout_marginLeft="50dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+    </LinearLayout>
+
+    <TextView
+    android:id="@+id/txtLabelPlaces"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/llBattle"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:text="Siirrä Lutemon:" />
+
+    <RadioGroup
+    android:id="@+id/rgBattle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/txtLabelPlaces"
+    android:layout_marginLeft="50dp"
+    android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/rbFightToFight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taisteluun" />
+
+        <RadioButton
+        android:id="@+id/rbFightToTrain"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Battle Field tab"
-        android:layout_centerInParent="true"/>
+        android:text="Treenikentälle" />
+
+    <RadioButton
+        android:id="@+id/rbFightToHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kotiin" />
+
+    </RadioGroup>
+
+    <Button
+    android:id="@+id/btnBattleTransfer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/rgBattle"
+    android:layout_alignParentEnd="false"
+    android:layout_centerHorizontal="true"
+    android:text="Siirrä" />
 
 </RelativeLayout>

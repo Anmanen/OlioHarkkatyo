@@ -19,16 +19,13 @@ import com.example.lutemon.Place;
 import com.example.lutemon.R;
 import com.example.lutemon.activities.FightActivity;
 import com.example.lutemon.activities.TrainActivity;
+import com.example.lutemon.activities.TransferLutemonsActivity;
 import com.example.lutemon.domain.Lutemon;
 import com.example.lutemon.domain.Storage;
 
 import java.util.concurrent.Callable;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends Fragment {
 
     private LinearLayout linearLayoutHome;
@@ -47,7 +44,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         linearLayoutHome = view.findViewById(R.id.llHome);
-        Storage.getInstance().getLutemons().forEach((id, lutemon) -> linearLayoutHome.addView(makeCheckbox(id, lutemon)));
+        Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
+            if (lutemon.getPlace() == Place.HOME) {
+                linearLayoutHome.addView(makeCheckbox(id, lutemon));
+            }
+        });
 
         return view;
     }
@@ -79,11 +80,9 @@ public class HomeFragment extends Fragment {
                 }
 
                 if (transferPlace == Place.TRAINING){
-                    Intent intent = new Intent(getActivity(), TrainActivity.class);
-                    startActivity(intent);
+                    ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(1);
                 } else if (transferPlace == Place.FIGHTING){
-                    Intent intent = new Intent(getActivity(), FightActivity.class);
-                    startActivity(intent);
+                    ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
                 }
             }
         });
@@ -95,12 +94,6 @@ public class HomeFragment extends Fragment {
         checkBox.setText(lutemon.getName() + " " + lutemon.getColor());
         return checkBox;
     }
-
-
-
-
-
-
 
 
 }

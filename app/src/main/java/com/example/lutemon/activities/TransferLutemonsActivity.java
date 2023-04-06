@@ -12,6 +12,9 @@ import com.google.android.material.tabs.TabLayout;
 public class TransferLutemonsActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
+
+
+
     ViewPager2 viewPager;
     ViewPagerAdapter viewPagerAdapter;
     @Override
@@ -41,5 +44,13 @@ public class TransferLutemonsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public ViewPager2 getViewPager() {
+        return viewPager;
+    }
+
+    public TabLayout getTabLayout() {
+        return tabLayout;
     }
 }
