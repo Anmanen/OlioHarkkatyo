@@ -38,7 +38,7 @@ public class TrainFieldFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_train_field, container, false);
         linearLayoutTrain = view.findViewById(R.id.llTrain);
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
-            if (lutemon.getPlace() == Place.TRAINING) {
+            if (lutemon.getPlace() == Place.TRAININGFIELD) {
                 linearLayoutTrain.addView(makeCheckbox(id, lutemon));
             }
         });
@@ -55,14 +55,14 @@ public class TrainFieldFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int amount = linearLayoutTrain.getChildCount();
-                Place transferPlace = Place.TRAINING;
+                Place transferPlace = Place.TRAININGFIELD;
 
                 switch (radioGroupTrain.getCheckedRadioButtonId()){
                     case R.id.rbTrainToTrain:
                         transferPlace = Place.TRAINING;
                         break;
                     case R.id.rbFightToTrain:
-                        transferPlace = Place.FIGHTING;
+                        transferPlace = Place.BATTLEFIELD;
                         break;
                     case R.id.rbFightToHome:
                         transferPlace = Place.HOME;
@@ -74,7 +74,7 @@ public class TrainFieldFragment extends Fragment {
                     }
                 }
 
-                if (transferPlace == Place.FIGHTING){
+                if (transferPlace == Place.BATTLEFIELD){
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
                 } else if (transferPlace == Place.HOME){
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(0);

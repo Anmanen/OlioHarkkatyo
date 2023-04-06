@@ -67,10 +67,10 @@ public class HomeFragment extends Fragment {
 
                 switch (radioGroupHome.getCheckedRadioButtonId()){
                     case R.id.rbHomeToTrain:
-                        transferPlace = Place.TRAINING;
+                        transferPlace = Place.TRAININGFIELD;
                         break;
                     case R.id.rbHomeToFight:
-                        transferPlace = Place.FIGHTING;
+                        transferPlace = Place.BATTLEFIELD;
                 }
                 for (int i = 0; i<amount; i++){
                     CheckBox cb = (CheckBox)linearLayoutHome.getChildAt(i);
@@ -79,9 +79,9 @@ public class HomeFragment extends Fragment {
                     }
                 }
 
-                if (transferPlace == Place.TRAINING){
+                if (transferPlace == Place.TRAININGFIELD){
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(1);
-                } else if (transferPlace == Place.FIGHTING){
+                } else if (transferPlace == Place.BATTLEFIELD){
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
                 }
             }
