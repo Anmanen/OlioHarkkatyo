@@ -50,7 +50,7 @@ public class TrainFieldFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         transferFromTrain = view.findViewById((R.id.btnTrainTransfer));
-        radioGroupTrain = view.findViewById(R.id.rgBattle);
+        radioGroupTrain = view.findViewById(R.id.rgTrain);
         transferFromTrain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

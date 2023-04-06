@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".activities.TrainActivity">
 
+    <TextView
+        android:id="@+id/txtSelectedOnes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valitut treenaajat:" />
+
+    <LinearLayout
+        android:id="@+id/llTrainers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/txtSelectedOnes"
+        tools:layout_editor_absoluteX="1dp">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnTrain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startTraining"
+        android:text="Aloita treenaus!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llTrainers" />
+
+    <TextView
+        android:id="@+id/txtBattle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Treenin kulku"
+        app:layout_constraintTop_toBottomOf="@+id/btnTrain"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <LinearLayout
+        android:id="@+id/llTrainActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
