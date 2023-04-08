@@ -32,7 +32,7 @@ public class LutemonInfoAdapter extends RecyclerView.Adapter<LutemonInfoHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull LutemonInfoHolder holder, int position) {
-        holder.image.setImageResource(R.drawable.rabbit);
+        holder.image.setImageResource(lutemonHashMap.get(position).getImage());
         holder.name.setText(lutemonHashMap.get(position).getName()+ " (" + lutemonHashMap.get(position).getColor() + ")");
         holder.attack.setText(String.valueOf(lutemonHashMap.get(position).getAttack()));
         holder.defence.setText(String.valueOf(lutemonHashMap.get(position).getDefence()));

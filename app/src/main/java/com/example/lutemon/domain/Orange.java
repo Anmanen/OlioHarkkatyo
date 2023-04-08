@@ -1,5 +1,6 @@
 package com.example.lutemon.domain;
 
+import com.example.lutemon.R;
 import com.example.lutemon.domain.Lutemon;
 
 public class Orange extends Lutemon {
@@ -13,6 +14,7 @@ public class Orange extends Lutemon {
         super.defence = defence;
         super.maxHealth = maxHealth;
         super.health = maxHealth;
+        super.image = R.drawable.orange;
     }
 
     @Override

@@ -15,6 +15,8 @@ public abstract class Lutemon {
     protected int experience;
     protected Place place;
 
+    protected int image;
+
 
     protected int defeats;
     private static int idCounter;
@@ -84,5 +86,13 @@ public abstract class Lutemon {
 
     public void setDefeats(int defeats) {
         this.defeats = defeats;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }
