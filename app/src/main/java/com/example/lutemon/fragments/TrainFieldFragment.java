@@ -81,16 +81,19 @@ public class TrainFieldFragment extends Fragment {
 
                 if ((transferPlace == Place.BATTLEFIELD) && isFound){
                     clearSelections();
-                    ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
+                    Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    startActivity(intent);
+
                 } else if ((transferPlace == Place.HOME) && isFound){
                     clearSelections();
-                    ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(0);
+                    Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    startActivity(intent);
+
                 } else if (isFound){
+                    clearSelections();
                     Intent intent = new Intent(getActivity(), TrainActivity.class);
                     startActivity(intent);
                 }
-
-
             }
         });
     }
