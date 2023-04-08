@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,8 @@ public class HomeFragment extends Fragment {
 
     private Button transferFromHome;
 
+    private int amount;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -53,6 +56,8 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -62,8 +67,9 @@ public class HomeFragment extends Fragment {
         transferFromHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int amount = linearLayoutHome.getChildCount();
+
                 Place transferPlace = Place.HOME;
+                amount = linearLayoutHome.getChildCount();
 
                 switch (radioGroupHome.getCheckedRadioButtonId()){
                     case R.id.rbHomeToTrain:
@@ -71,6 +77,7 @@ public class HomeFragment extends Fragment {
                         break;
                     case R.id.rbHomeToFight:
                         transferPlace = Place.BATTLEFIELD;
+                        break;
                 }
                 for (int i = 0; i<amount; i++){
                     CheckBox cb = (CheckBox)linearLayoutHome.getChildAt(i);
@@ -80,18 +87,17 @@ public class HomeFragment extends Fragment {
                 }
 
                 if (transferPlace == Place.TRAININGFIELD){
+                    clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(1);
-                } else if (transferPlace == Place.BATTLEFIELD){
-                    ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
-                }
 
-                for (int i = 0; i<amount; i++){
-                    CheckBox cb = (CheckBox)linearLayoutHome.getChildAt(i);
-                    cb.setChecked(false);
+                } else if (transferPlace == Place.BATTLEFIELD){
+                    clearSelections();
+                    ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
+
                 }
-                radioGroupHome.clearCheck();;
             }
         });
+
     }
 
     public CheckBox makeCheckbox(int id, Lutemon lutemon){
@@ -101,5 +107,16 @@ public class HomeFragment extends Fragment {
         return checkBox;
     }
 
+    public void clearSelections(){
+
+        linearLayoutHome.removeAllViews();
+        Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
+            if (lutemon.getPlace() == Place.HOME) {
+                linearLayoutHome.addView(makeCheckbox(id, lutemon));
+            }
+        });
+
+        radioGroupHome.clearCheck();;
+    }
 
 }

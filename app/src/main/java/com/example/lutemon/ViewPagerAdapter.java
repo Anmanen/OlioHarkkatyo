@@ -9,10 +9,15 @@ import com.example.lutemon.fragments.BattleFieldFragment;
 import com.example.lutemon.fragments.HomeFragment;
 import com.example.lutemon.fragments.TrainFieldFragment;
 
+import java.util.ArrayList;
+
 public class ViewPagerAdapter extends FragmentStateAdapter {
 
-    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+    private ArrayList<String> listOfTitles;
+
+    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<String> listOfTitles) {
         super(fragmentActivity);
+        this.listOfTitles = listOfTitles;
     }
 
     @NonNull
@@ -25,13 +30,12 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
                 return new TrainFieldFragment();
             case 2:
                 return new BattleFieldFragment();
-            default:
-                return new HomeFragment();
         }
+        return new HomeFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return listOfTitles.size();
     }
 }

@@ -82,8 +82,10 @@ public class BattleFieldFragment extends Fragment {
                 }
 
                 if (transferPlace == Place.TRAININGFIELD){
+                    clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(1);
                 } else if (transferPlace == Place.HOME){
+                    clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(0);
                 } else {
                     if (fighterCounter == 2) {
@@ -110,6 +112,18 @@ public class BattleFieldFragment extends Fragment {
         checkBox.setId(id);
         checkBox.setText(lutemon.getName() + " " + lutemon.getColor());
         return checkBox;
+    }
+
+    public void clearSelections(){
+
+        linearLayoutBattle.removeAllViews();
+        Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
+            if (lutemon.getPlace() == Place.HOME) {
+                linearLayoutBattle.addView(makeCheckbox(id, lutemon));
+            }
+        });
+
+        radioGroupBattle.clearCheck();;
     }
 
 }

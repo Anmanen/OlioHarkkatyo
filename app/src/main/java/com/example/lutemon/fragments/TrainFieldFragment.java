@@ -61,11 +61,12 @@ public class TrainFieldFragment extends Fragment {
                     case R.id.rbTrainToTrain:
                         transferPlace = Place.TRAINING;
                         break;
-                    case R.id.rbFightToTrain:
+                    case R.id.rbTrainToFight:
                         transferPlace = Place.BATTLEFIELD;
                         break;
-                    case R.id.rbFightToHome:
+                    case R.id.rbTrainToHome:
                         transferPlace = Place.HOME;
+                        break;
                 }
                 for (int i = 0; i<amount; i++){
                     CheckBox cb = (CheckBox)linearLayoutTrain.getChildAt(i);
@@ -75,19 +76,17 @@ public class TrainFieldFragment extends Fragment {
                 }
 
                 if (transferPlace == Place.BATTLEFIELD){
+                    clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
                 } else if (transferPlace == Place.HOME){
+                    clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(0);
                 } else {
                     Intent intent = new Intent(getActivity(), TrainActivity.class);
                     startActivity(intent);
                 }
 
-                for (int i = 0; i<amount; i++){
-                    CheckBox cb = (CheckBox)linearLayoutTrain.getChildAt(i);
-                    cb.setChecked(false);
-                }
-                radioGroupTrain.clearCheck();;
+
             }
         });
     }
@@ -97,5 +96,17 @@ public class TrainFieldFragment extends Fragment {
         checkBox.setId(id);
         checkBox.setText(lutemon.getName() + " " + lutemon.getColor());
         return checkBox;
+    }
+
+    public void clearSelections(){
+
+        linearLayoutTrain.removeAllViews();
+        Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
+            if (lutemon.getPlace() == Place.HOME) {
+                linearLayoutTrain.addView(makeCheckbox(id, lutemon));
+            }
+        });
+
+        radioGroupTrain.clearCheck();;
     }
 }
