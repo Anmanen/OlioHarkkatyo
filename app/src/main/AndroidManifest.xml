@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Lutemon"
         tools:targetApi="31">
         <activity
-            android:name=".StatisticsActivity"
+            android:name=".activities.StatisticsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.TrainActivity"

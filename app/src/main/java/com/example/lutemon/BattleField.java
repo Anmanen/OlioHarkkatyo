@@ -62,4 +62,8 @@ public class BattleField {
     public ArrayList<String> getActions() {
         return actions;
     }
+
+    public static int getBattleCounter() {
+        return battleCounter;
+    }
 }
