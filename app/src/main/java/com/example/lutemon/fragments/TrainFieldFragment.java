@@ -32,11 +32,14 @@ public class TrainFieldFragment extends Fragment {
     private RadioGroup radioGroupTrain;
     private Button transferFromTrain;
 
+    private boolean isFound = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_train_field, container, false);
         linearLayoutTrain = view.findViewById(R.id.llTrain);
+
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
             if (lutemon.getPlace() == Place.TRAININGFIELD) {
                 linearLayoutTrain.addView(makeCheckbox(id, lutemon));
@@ -72,16 +75,17 @@ public class TrainFieldFragment extends Fragment {
                     CheckBox cb = (CheckBox)linearLayoutTrain.getChildAt(i);
                     if (cb.isChecked()) {
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
+                        isFound = true;
                     }
                 }
 
-                if (transferPlace == Place.BATTLEFIELD){
+                if ((transferPlace == Place.BATTLEFIELD) && isFound){
                     clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
-                } else if (transferPlace == Place.HOME){
+                } else if ((transferPlace == Place.HOME) && isFound){
                     clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(0);
-                } else {
+                } else if (isFound){
                     Intent intent = new Intent(getActivity(), TrainActivity.class);
                     startActivity(intent);
                 }
@@ -101,12 +105,14 @@ public class TrainFieldFragment extends Fragment {
     public void clearSelections(){
 
         linearLayoutTrain.removeAllViews();
+        ((TransferLutemonsActivity)getActivity()).getViewPagerAdapter().notifyDataSetChanged();
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
-            if (lutemon.getPlace() == Place.HOME) {
+            if (lutemon.getPlace() == Place.TRAININGFIELD) {
                 linearLayoutTrain.addView(makeCheckbox(id, lutemon));
             }
         });
 
-        radioGroupTrain.clearCheck();;
+        radioGroupTrain.clearCheck();
+        isFound = false;
     }
 }

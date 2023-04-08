@@ -33,36 +33,42 @@ public class TransferLutemonsActivity extends AppCompatActivity {
         viewPager.setUserInputEnabled(true);
         viewPagerAdapter = new ViewPagerAdapter(this, listOfTitles);
         viewPager.setAdapter(viewPagerAdapter);
-        //addTabLayoutMediator();
-
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                viewPagerAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-
-        });
-
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                tabLayout.getTabAt(position).select();
+        TabLayoutMediator tbmediator = new TabLayoutMediator(tabLayout,viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override public void onConfigureTab(TabLayout.Tab tab, int position) {
+                tab.setText(listOfTitles.get(position));
             }
         });
+        tbmediator.attach();
+
+
+
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                viewPagerAdapter.notifyDataSetChanged();
+//                viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//                viewPagerAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//                viewPagerAdapter.notifyDataSetChanged();
+//            }
+//
+//        });
+//
+//        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+//            @Override
+//            public void onPageSelected(int position) {
+//                super.onPageSelected(position);
+//                viewPagerAdapter.notifyDataSetChanged();
+//                tabLayout.getTabAt(position).select();
+//            }
+//        });
 
     }
     private void loadTitles() {
@@ -84,5 +90,9 @@ public class TransferLutemonsActivity extends AppCompatActivity {
 
     public ViewPager2 getViewPager() {
         return viewPager;
+    }
+
+    public ViewPagerAdapter getViewPagerAdapter() {
+        return viewPagerAdapter;
     }
 }

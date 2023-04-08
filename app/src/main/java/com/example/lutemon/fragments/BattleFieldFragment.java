@@ -32,6 +32,8 @@ public class BattleFieldFragment extends Fragment {
     private RadioGroup radioGroupBattle;
     private Button transferFromBattle;
 
+    private boolean isFound;
+
     public BattleFieldFragment() {
         // Required empty public constructor
     }
@@ -40,6 +42,7 @@ public class BattleFieldFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_battle_field, container, false);
         linearLayoutBattle = view.findViewById(R.id.llBattle);
+
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
             if (lutemon.getPlace() == Place.BATTLEFIELD) {
                 linearLayoutBattle.addView(makeCheckbox(id, lutemon));
@@ -76,18 +79,21 @@ public class BattleFieldFragment extends Fragment {
                     if ((cb.isChecked()) && transferPlace == Place.FIGHTING){
                         fighterCounter++;
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
-                    } else {
+                        isFound = true;
+                    } else if (cb.isChecked()){
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
+                        isFound = true;
                     }
                 }
 
-                if (transferPlace == Place.TRAININGFIELD){
+
+                if ((transferPlace == Place.TRAININGFIELD) && isFound){
                     clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(1);
-                } else if (transferPlace == Place.HOME){
+                } else if ((transferPlace == Place.HOME) && isFound){
                     clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(0);
-                } else {
+                } else if (isFound){
                     if (fighterCounter == 2) {
                         Intent intent = new Intent(getActivity(), FightActivity.class);
                         startActivity(intent);
@@ -95,11 +101,7 @@ public class BattleFieldFragment extends Fragment {
                         Toast.makeText(getActivity(),"Valitse kaksi Lutemonia",Toast.LENGTH_SHORT).show();
                     }
                 }
-                for (int i = 0; i<amount; i++){
-                    CheckBox cb = (CheckBox)linearLayoutBattle.getChildAt(i);
-                    cb.setChecked(false);
-                }
-                radioGroupBattle.clearCheck();;
+
             }
 
         });
@@ -117,8 +119,9 @@ public class BattleFieldFragment extends Fragment {
     public void clearSelections(){
 
         linearLayoutBattle.removeAllViews();
+        ((TransferLutemonsActivity)getActivity()).getViewPagerAdapter().notifyDataSetChanged();
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
-            if (lutemon.getPlace() == Place.HOME) {
+            if (lutemon.getPlace() == Place.BATTLEFIELD) {
                 linearLayoutBattle.addView(makeCheckbox(id, lutemon));
             }
         });

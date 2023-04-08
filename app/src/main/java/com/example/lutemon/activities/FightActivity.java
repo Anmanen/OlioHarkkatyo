@@ -2,6 +2,7 @@ package com.example.lutemon.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -49,6 +50,11 @@ public class FightActivity extends AppCompatActivity {
         for (String action : actions){
             actionsLayout.addView(makeActionTextView(action));
         }
+    }
+
+    public void backToHome(View view){
+        Intent intent = new Intent(this,TransferLutemonsActivity.class);
+        startActivity(intent);
     }
 
     public TextView makeTextView(int id, Lutemon lutemon){

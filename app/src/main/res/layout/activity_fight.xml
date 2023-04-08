@@ -50,6 +50,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBackToGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backToHome"
+        android:text="Takaisin kotiin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llActions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

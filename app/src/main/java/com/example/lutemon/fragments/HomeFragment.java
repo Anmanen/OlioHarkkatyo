@@ -36,6 +36,8 @@ public class HomeFragment extends Fragment {
 
     private int amount;
 
+    private boolean isFound = false;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -47,6 +49,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         linearLayoutHome = view.findViewById(R.id.llHome);
+
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
             if (lutemon.getPlace() == Place.HOME) {
                 linearLayoutHome.addView(makeCheckbox(id, lutemon));
@@ -83,15 +86,17 @@ public class HomeFragment extends Fragment {
                     CheckBox cb = (CheckBox)linearLayoutHome.getChildAt(i);
                     if (cb.isChecked()) {
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
+                        isFound = true;
                     }
                 }
 
-                if (transferPlace == Place.TRAININGFIELD){
-                    clearSelections();
 
+
+                if ((transferPlace == Place.TRAININGFIELD) && isFound){
+                    clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(1);
 
-                } else if (transferPlace == Place.BATTLEFIELD){
+                } else if ((transferPlace == Place.BATTLEFIELD) && isFound){
                     clearSelections();
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
 
@@ -109,15 +114,16 @@ public class HomeFragment extends Fragment {
     }
 
     public void clearSelections(){
-
         linearLayoutHome.removeAllViews();
+        ((TransferLutemonsActivity)getActivity()).getViewPagerAdapter().notifyDataSetChanged();
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
             if (lutemon.getPlace() == Place.HOME) {
                 linearLayoutHome.addView(makeCheckbox(id, lutemon));
             }
         });
 
-        radioGroupHome.clearCheck();;
+        radioGroupHome.clearCheck();
+        isFound = false;
     }
 
 }
