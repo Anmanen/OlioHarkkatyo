@@ -88,6 +88,7 @@ public class HomeFragment extends Fragment {
 
                 if (transferPlace == Place.TRAININGFIELD){
                     clearSelections();
+
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(1);
 
                 } else if (transferPlace == Place.BATTLEFIELD){
