@@ -84,6 +84,12 @@ public class HomeFragment extends Fragment {
                 } else if (transferPlace == Place.BATTLEFIELD){
                     ((TransferLutemonsActivity)getActivity()).getViewPager().setCurrentItem(2);
                 }
+
+                for (int i = 0; i<amount; i++){
+                    CheckBox cb = (CheckBox)linearLayoutHome.getChildAt(i);
+                    cb.setChecked(false);
+                }
+                radioGroupHome.clearCheck();;
             }
         });
     }

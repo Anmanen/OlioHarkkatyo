@@ -82,6 +82,12 @@ public class TrainFieldFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), TrainActivity.class);
                     startActivity(intent);
                 }
+
+                for (int i = 0; i<amount; i++){
+                    CheckBox cb = (CheckBox)linearLayoutTrain.getChildAt(i);
+                    cb.setChecked(false);
+                }
+                radioGroupTrain.clearCheck();;
             }
         });
     }

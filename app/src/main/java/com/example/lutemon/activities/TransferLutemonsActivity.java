@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.lutemon.R;
 import com.example.lutemon.ViewPagerAdapter;
@@ -12,8 +13,6 @@ import com.google.android.material.tabs.TabLayout;
 public class TransferLutemonsActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
-
-
 
     ViewPager2 viewPager;
     ViewPagerAdapter viewPagerAdapter;
@@ -26,6 +25,7 @@ public class TransferLutemonsActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.vpTabs);
         viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -42,15 +42,20 @@ public class TransferLutemonsActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
+
+        });
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                tabLayout.getTabAt(position).select();
+            }
         });
 
     }
 
     public ViewPager2 getViewPager() {
         return viewPager;
-    }
-
-    public TabLayout getTabLayout() {
-        return tabLayout;
     }
 }

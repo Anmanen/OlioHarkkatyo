@@ -28,8 +28,6 @@ import com.example.lutemon.domain.Storage;
 
 public class BattleFieldFragment extends Fragment {
 
-
-
     private LinearLayout linearLayoutBattle;
     private RadioGroup radioGroupBattle;
     private Button transferFromBattle;
@@ -95,8 +93,16 @@ public class BattleFieldFragment extends Fragment {
                         Toast.makeText(getActivity(),"Valitse kaksi Lutemonia",Toast.LENGTH_SHORT).show();
                     }
                 }
+                for (int i = 0; i<amount; i++){
+                    CheckBox cb = (CheckBox)linearLayoutBattle.getChildAt(i);
+                    cb.setChecked(false);
+                }
+                radioGroupBattle.clearCheck();;
             }
+
         });
+
+
     }
 
     public CheckBox makeCheckbox(int id, Lutemon lutemon){
