@@ -94,11 +94,13 @@ public class HomeFragment extends Fragment {
 
                 if ((transferPlace == Place.TRAININGFIELD) && isFound){
                     clearSelections();
+
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
                     startActivity(intent);
 
                 } else if ((transferPlace == Place.BATTLEFIELD) && isFound){
                     clearSelections();
+
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
                     startActivity(intent);
 
@@ -111,7 +113,7 @@ public class HomeFragment extends Fragment {
     public CheckBox makeCheckbox(int id, Lutemon lutemon){
         CheckBox checkBox = new CheckBox(getActivity());
         checkBox.setId(id);
-        checkBox.setText(lutemon.getName() + " " + lutemon.getColor());
+        checkBox.setText(lutemon.getName() + " " + lutemon.getColor() + ": elämä " + lutemon.getHealth() + "/" + lutemon.getMaxHealth());
         return checkBox;
     }
 

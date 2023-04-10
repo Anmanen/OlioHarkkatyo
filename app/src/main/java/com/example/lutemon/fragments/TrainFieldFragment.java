@@ -101,7 +101,7 @@ public class TrainFieldFragment extends Fragment {
     public CheckBox makeCheckbox(int id, Lutemon lutemon){
         CheckBox checkBox = new CheckBox(getActivity());
         checkBox.setId(id);
-        checkBox.setText(lutemon.getName() + " " + lutemon.getColor());
+        checkBox.setText(lutemon.getName() + " " + lutemon.getColor() + ": elämä " + lutemon.getHealth() + "/" + lutemon.getMaxHealth());
         return checkBox;
     }
 

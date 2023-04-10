@@ -38,4 +38,11 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return listOfTitles.size();
     }
+
+    public void updateAndMoveToFragment(){
+        new HomeFragment();
+        new TrainFieldFragment();
+        new BattleFieldFragment();
+
+    }
 }
