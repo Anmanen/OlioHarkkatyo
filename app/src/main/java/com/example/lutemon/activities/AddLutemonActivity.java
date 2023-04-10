@@ -55,6 +55,7 @@ public class AddLutemonActivity extends AppCompatActivity {
         }
 
         Storage.getInstance().addLutemon(lutemon.getId(), lutemon);
+        Storage.getInstance().saveLutemons(this);
 
         name.setText("");
         colorChoice.clearCheck();

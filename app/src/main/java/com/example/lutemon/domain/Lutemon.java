@@ -2,7 +2,9 @@ package com.example.lutemon.domain;
 
 import com.example.lutemon.Place;
 
-public abstract class Lutemon {
+import java.io.Serializable;
+
+public abstract class Lutemon implements Serializable {
 
     protected String name;
     protected String color;
