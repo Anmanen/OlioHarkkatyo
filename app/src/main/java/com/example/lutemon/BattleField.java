@@ -5,6 +5,7 @@ import com.example.lutemon.domain.Storage;
 import com.example.lutemon.domain.White;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BattleField {
 
@@ -12,8 +13,9 @@ public class BattleField {
     private Lutemon fighterB;
 
     private static int battleCounter;
+    private int attackCounter;
 
-    private ArrayList<String> actions = new ArrayList<>();
+    private HashMap<Integer, ArrayList<Object>> actions = new HashMap<>();
 
     public BattleField(Lutemon fighterA, Lutemon fighterB) {
         this.fighterA = fighterA;
@@ -49,17 +51,29 @@ public class BattleField {
     }
 
     public Lutemon attack (Lutemon A, Lutemon B){
+
         if (((A.getAttack() + A.getExperience()) - B.getDefence()) <= B.getHealth()){
             B.setHealth(B.getHealth() - ((A.getAttack() + A.getExperience()) - B.getDefence()));
-            actions.add(A.getName() + " hyökkää, " + B.getName() + " puolustautuu: " + B.getName() + " jäi henkiin " + B.getHealth() + "/" + B.getMaxHealth());
+            ArrayList<Object> temp = new ArrayList<>();
+            temp.add(0,A.getImage());
+            temp.add(1, R.drawable.attack);
+            temp.add(2, B.getImage());
+            temp.add(3, " : " + B.getName() + " jäi henkiin " + B.getHealth() + "/" + B.getMaxHealth());
+            actions.put(attackCounter, temp);
         } else {
-            actions.add(A.getName() + " hyökkää, " + B.getName() + " puolustautuu: " + B.getName() + " kuoli ");
+            ArrayList<Object> temp = new ArrayList<>();
+            temp.add(0,A.getImage());
+            temp.add(1, R.drawable.attack);
+            temp.add(2, B.getImage());
+            temp.add(3, " : " + B.getName() + " kuoli");
+            actions.put(attackCounter, temp);
             B.setHealth(0);
         }
+        attackCounter++;
         return B;
     }
 
-    public ArrayList<String> getActions() {
+    public HashMap<Integer, ArrayList<Object>> getActions() {
         return actions;
     }
 
