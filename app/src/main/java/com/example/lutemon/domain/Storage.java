@@ -8,13 +8,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Comparator;
+import java.util.List;
 
 public class Storage {
 
     protected String name;
     protected Lutemon lutemon;
     private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
+
     private static Storage storage;
 
     private static final String LUTEMONDATA = "lutemondata.data";
@@ -46,8 +51,19 @@ public class Storage {
     }
 
 
-    public void listLutemons(){
+    public Lutemon listLutemonsByWins(){
 
+        List<Lutemon> lutemonList = new ArrayList<Lutemon>(lutemons.values());
+        Collections.sort(lutemonList, (a, b) -> Integer.compare(b.getWins(), a.getWins()));
+
+        return lutemonList.get(0);
+    }
+
+    public Lutemon listLutemonsByDefeats(){
+        List<Lutemon> lutemonList = new ArrayList<Lutemon>(lutemons.values());
+        Collections.sort(lutemonList, (a, b) -> Integer.compare(b.getDefeats(), a.getDefeats()));
+
+        return lutemonList.get(0);
     }
 
     public void loadLutemons(Context context) throws FileNotFoundException {

@@ -19,7 +19,7 @@ public abstract class Lutemon implements Serializable {
 
     protected int image;
 
-
+    protected int wins;
     protected int defeats;
     private static int idCounter;
 
@@ -81,6 +81,13 @@ public abstract class Lutemon implements Serializable {
         this.place = place;
     }
 
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
 
     public int getDefeats() {
         return defeats;
