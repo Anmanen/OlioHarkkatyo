@@ -1,10 +1,14 @@
 package com.example.lutemon.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,6 +16,7 @@ import com.example.lutemon.R;
 import com.example.lutemon.domain.Storage;
 
 import java.io.FileNotFoundException;
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddLutemonActivity.class);
         startActivity(intent);
     }
+
 
     public void loadSavedLutemons(View view){
         try {
