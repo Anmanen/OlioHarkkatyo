@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.lutemon.BattleField;
@@ -27,6 +28,8 @@ public class FightActivity extends AppCompatActivity {
     LinearLayout fightersLayout;
     LinearLayout actionsLayout;
 
+    ScrollView scrollView;
+
     ArrayList<Lutemon> fighters = new ArrayList();
     HashMap<Integer, ArrayList<Object>> actions = new HashMap<>();
 
@@ -37,6 +40,7 @@ public class FightActivity extends AppCompatActivity {
 
         fightersLayout = findViewById(R.id.llTwoFighters);
         actionsLayout = findViewById(R.id.llActions);
+        scrollView = findViewById(R.id.svActions);
 
 
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
@@ -53,6 +57,7 @@ public class FightActivity extends AppCompatActivity {
         battleField.fight();
         actions = battleField.getActions();
         actions.forEach((index, action) -> actionsLayout.addView(makeActionRow(action)));
+        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
     }
 
