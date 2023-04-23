@@ -9,69 +9,13 @@
     android:layout_marginRight="10dp"
     tools:context=".activities.StatisticsActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+
+
+    <com.anychart.AnyChartView
+        android:id="@+id/acwDefeatsWins"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="3dp">
+        android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/txtBattlesLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Taisteluita:" />
 
-        <TextView
-            android:id="@+id/txtBattles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="Taisteluita" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Eniten voittoja:" />
-
-        <TextView
-            android:id="@+id/txtMostWins"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="TextView" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Eniten häviöitä:" />
-
-        <TextView
-            android:id="@+id/txtMostDefences"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:text="TextView" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

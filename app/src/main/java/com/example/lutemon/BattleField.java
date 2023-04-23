@@ -53,7 +53,7 @@ public class BattleField {
 
     public Lutemon attack (Lutemon A, Lutemon B){
 
-        if (((A.getAttack() + A.getExperience()) - B.getDefence()) <= B.getHealth()){
+        if (((A.getAttack() + A.getExperience()) - B.getDefence()) < B.getHealth()){
             B.setHealth(B.getHealth() - ((A.getAttack() + A.getExperience()) - B.getDefence()));
             ArrayList<Object> temp = new ArrayList<>();
             temp.add(0,A.getImage());
@@ -63,7 +63,7 @@ public class BattleField {
             actions.put(attackCounter, temp);
         } else {
             ArrayList<Object> temp = new ArrayList<>();
-            temp.add(0,A.getImage());
+            temp.add(0, A.getImage());
             temp.add(1, R.drawable.attack);
             temp.add(2, B.getImage());
             temp.add(3, " : " + B.getName() + " kuoli");
