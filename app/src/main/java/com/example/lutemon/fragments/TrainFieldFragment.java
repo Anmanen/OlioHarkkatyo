@@ -82,11 +82,13 @@ public class TrainFieldFragment extends Fragment {
                 if ((transferPlace == Place.BATTLEFIELD) && isFound){
                     clearSelections();
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    intent.putExtra("position", 2);
                     startActivity(intent);
 
                 } else if ((transferPlace == Place.HOME) && isFound){
                     clearSelections();
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    intent.putExtra("position", 0);
                     startActivity(intent);
 
                 } else if (isFound){

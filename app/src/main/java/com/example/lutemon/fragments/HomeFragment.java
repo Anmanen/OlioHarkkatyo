@@ -19,6 +19,7 @@ import android.widget.RadioGroup;
 import com.example.lutemon.Place;
 import com.example.lutemon.R;
 import com.example.lutemon.activities.FightActivity;
+import com.example.lutemon.activities.MainActivity;
 import com.example.lutemon.activities.TrainActivity;
 import com.example.lutemon.activities.TransferLutemonsActivity;
 import com.example.lutemon.domain.Lutemon;
@@ -48,13 +49,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        linearLayoutHome = view.findViewById(R.id.llHome);
 
-        Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
-            if (lutemon.getPlace() == Place.HOME) {
-                linearLayoutHome.addView(makeCheckbox(id, lutemon));
-            }
-        });
+        loadListFromStorage(view);
 
         return view;
     }
@@ -91,17 +87,16 @@ public class HomeFragment extends Fragment {
                 }
 
 
-
                 if ((transferPlace == Place.TRAININGFIELD) && isFound){
                     clearSelections();
-
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    intent.putExtra("position", 1);
                     startActivity(intent);
 
                 } else if ((transferPlace == Place.BATTLEFIELD) && isFound){
                     clearSelections();
-
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    intent.putExtra("position", 2);
                     startActivity(intent);
 
                 }
@@ -128,6 +123,16 @@ public class HomeFragment extends Fragment {
 
         radioGroupHome.clearCheck();
         isFound = false;
+    }
+
+    public void loadListFromStorage(View view){
+        linearLayoutHome = view.findViewById(R.id.llHome);
+
+        Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
+            if (lutemon.getPlace() == Place.HOME) {
+                linearLayoutHome.addView(makeCheckbox(id, lutemon));
+            }
+        });
     }
 
 }

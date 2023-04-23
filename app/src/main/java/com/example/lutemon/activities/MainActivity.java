@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadSavedLutemons(View view){
         try {
             Storage.getInstance().loadLutemons(this);
+            Toast.makeText(this, "Lutemonit ladattu", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e){
             Toast.makeText(this, "Lutemoneja ei ole vielä tallennettu, lisää Lutemoneja ensin", Toast.LENGTH_SHORT).show();
         }

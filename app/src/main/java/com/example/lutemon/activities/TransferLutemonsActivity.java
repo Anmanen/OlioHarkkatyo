@@ -25,6 +25,8 @@ public class TransferLutemonsActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
+    private int position;
+
     private ArrayList<String> listOfTitles = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,65 +35,56 @@ public class TransferLutemonsActivity extends AppCompatActivity {
 
         loadTitles();
 
+
         tabLayout = findViewById(R.id.tlFields);
         viewPager = findViewById(R.id.vpTabs);
         viewPager.setUserInputEnabled(true);
         viewPagerAdapter = new ViewPagerAdapter(this, listOfTitles);
         viewPager.setAdapter(viewPagerAdapter);
-        TabLayoutMediator tbmediator = new TabLayoutMediator(tabLayout,viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override public void onConfigureTab(TabLayout.Tab tab, int position) {
-                tab.setText(listOfTitles.get(position));
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            position = bundle.getInt("position");
+            viewPager.setCurrentItem((position));
+            tabLayout.getTabAt(position).select();
+        }
+
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPagerAdapter.notifyDataSetChanged();
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+
+        });
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                viewPagerAdapter.notifyDataSetChanged();
+                tabLayout.getTabAt(position).select();
             }
         });
-        tbmediator.attach();
-
-
-
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                viewPagerAdapter.notifyDataSetChanged();
-//                viewPager.setCurrentItem(tab.getPosition());
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//                viewPagerAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//                viewPagerAdapter.notifyDataSetChanged();
-//            }
-//
-//        });
-//
-//        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                super.onPageSelected(position);
-//                viewPagerAdapter.notifyDataSetChanged();
-//                tabLayout.getTabAt(position).select();
-//            }
-//        });
 
     }
     private void loadTitles() {
 
-        listOfTitles.add("Kotix");
-        listOfTitles.add("Treenix");
-        listOfTitles.add("Taistelux");
+        listOfTitles.add("Koti");
+        listOfTitles.add("Treeni");
+        listOfTitles.add("Taistelu");
     }
 
-    private void addTabLayoutMediator() {
-        TabLayoutMediator tbmediator = new TabLayoutMediator(tabLayout,viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override public void onConfigureTab(TabLayout.Tab tab, int position) {
-                tab.setText(listOfTitles.get(position));
-            }
-        });
-        tbmediator.attach();
-
-    }
 
     public ViewPager2 getViewPager() {
         return viewPager;
@@ -100,6 +93,7 @@ public class TransferLutemonsActivity extends AppCompatActivity {
     public ViewPagerAdapter getViewPagerAdapter() {
         return viewPagerAdapter;
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

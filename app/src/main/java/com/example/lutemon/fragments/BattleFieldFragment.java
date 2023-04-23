@@ -90,11 +90,13 @@ public class BattleFieldFragment extends Fragment {
                 if ((transferPlace == Place.TRAININGFIELD) && isFound){
                     clearSelections();
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    intent.putExtra("position", 1);
                     startActivity(intent);
 
                 } else if ((transferPlace == Place.HOME) && isFound){
                     clearSelections();
                     Intent intent = new Intent(getActivity().getApplicationContext(), TransferLutemonsActivity.class);
+                    intent.putExtra("position", 0);
                     startActivity(intent);
 
                 } else if (isFound){
