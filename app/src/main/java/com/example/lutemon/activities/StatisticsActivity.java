@@ -8,29 +8,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
-import com.anychart.AnyChartView;
-import com.anychart.chart.common.dataentry.DataEntry;
-import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.charts.Cartesian;
-import com.anychart.charts.Pie;
-import com.anychart.core.axes.Linear;
-import com.anychart.core.cartesian.series.Bar;
-import com.anychart.data.Mapping;
-import com.anychart.data.Set;
-import com.anychart.enums.Anchor;
-import com.anychart.enums.Orientation;
-import com.anychart.enums.ScaleStackMode;
 import com.example.lutemon.BattleField;
 import com.example.lutemon.R;
 import com.example.lutemon.domain.Lutemon;
 import com.example.lutemon.domain.Storage;
-
-import com.anychart.AnyChart;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class StatisticsActivity extends AppCompatActivity {
@@ -46,6 +30,16 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
+        battles = findViewById(R.id.txtBattles);
+        battles.setText(String.valueOf(BattleField.getBattleCounter()));
+
+        mostWins = findViewById(R.id.txtMostWins);
+        Lutemon winner = Storage.getInstance().listLutemonsByWins();
+        mostWins.setText(winner.getName() + " " + winner.getColor() + ": " + winner.getWins());
+
+        mostDefeats = findViewById(R.id.txtMostDefeats);
+        Lutemon loser = Storage.getInstance().listLutemonsByDefeats();
+        mostDefeats.setText(loser.getName() + " " + loser.getColor() + ": " + loser.getDefeats());
 
     }
 
@@ -66,5 +60,15 @@ public class StatisticsActivity extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showBarGraphView(View view){
+        Intent intent = new Intent(this, BarGraphActivity.class);
+        startActivity(intent);
+    }
+
+    public void showColumnGraphView(View view){
+        Intent intent = new Intent(this, ColumnGraphActivity.class);
+        startActivity(intent);
     }
 }

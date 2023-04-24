@@ -12,7 +12,10 @@
         android:theme="@style/Theme.Lutemon"
         tools:targetApi="31">
         <activity
-            android:name=".activities.GraphActivity"
+            android:name=".activities.ColumnGraphActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BarGraphActivity"
             android:exported="false" />
         <activity
             android:name=".activities.StatisticsActivity"

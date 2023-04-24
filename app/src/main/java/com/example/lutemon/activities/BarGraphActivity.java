@@ -27,12 +27,12 @@ import com.example.lutemon.domain.Storage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphActivity extends AppCompatActivity {
+public class BarGraphActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph);
+        setContentView(R.layout.activity_bar_graph);
 
         Cartesian barChart = AnyChart.bar();
         barChart.title("Kilpailijoiden voitot ja häviöt");
@@ -44,7 +44,7 @@ public class GraphActivity extends AppCompatActivity {
 
         List<DataEntry> barChartData = new ArrayList<>();
         Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
-            barChartData.add(new GraphActivity.CustomDataEntry(lutemon.getName(), lutemon.getWins(), -(lutemon.getDefeats())));
+            barChartData.add(new BarGraphActivity.CustomDataEntry(lutemon.getName(), lutemon.getWins(), -(lutemon.getDefeats())));
         });
 
         Set set = Set.instantiate();
