@@ -46,43 +46,7 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
-        Cartesian barChart = AnyChart.bar();
-        barChart.title("Kilpailijoiden voitot ja häviöt");
-        barChart.yScale().stackMode(ScaleStackMode.VALUE);
 
-        Linear xAxis = barChart.xAxis(0);
-        xAxis.enabled(true);
-        xAxis.orientation(Orientation.RIGHT);
-
-        List<DataEntry> barChartData = new ArrayList<>();
-        Storage.getInstance().getLutemons().forEach((id, lutemon) -> {
-            barChartData.add(new CustomDataEntry(lutemon.getName(), lutemon.getWins(), -(lutemon.getDefeats())));
-        });
-
-        Set set = Set.instantiate();
-        set.data(barChartData);
-        Mapping winsData = set.mapAs("{ x: 'x', value: 'wins' }");
-        Mapping defeatsData = set.mapAs("{ x: 'x', value: 'defeats' }");
-
-        Bar winsBar = barChart.bar(winsData);
-        winsBar.name("Voitot");
-        winsBar.tooltip()
-                .position("right")
-                .anchor(Anchor.LEFT_CENTER);
-
-        Bar defectsBar = barChart.bar(defeatsData);
-        defectsBar.name("Häviöt");
-        defectsBar.tooltip()
-                .position("left")
-                .anchor(Anchor.RIGHT_CENTER);
-
-        barChart.legend().enabled(true);
-        barChart.legend().inverted(true);
-        barChart.legend().fontSize(13d);
-
-
-        AnyChartView anyChartView = (AnyChartView) findViewById(R.id.acwDefeatsWins);
-        anyChartView.setChart(barChart);
     }
 
 
@@ -103,12 +67,4 @@ public class StatisticsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    private class CustomDataEntry extends ValueDataEntry {
-        CustomDataEntry(String x, int wins, int defeats) {
-            super(x, wins);
-            setValue("defeats", defeats);
-    }
-}
-
 }
