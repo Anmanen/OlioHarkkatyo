@@ -38,7 +38,7 @@ public class BarGraphActivity extends AppCompatActivity {
         barChart.title("Kilpailijoiden voitot ja häviöt");
         barChart.yScale().stackMode(ScaleStackMode.VALUE);
 
-        Linear xAxis = barChart.xAxis(0);
+        Linear xAxis = barChart.xAxis(1d);
         xAxis.enabled(true);
         xAxis.orientation(Orientation.RIGHT);
 
