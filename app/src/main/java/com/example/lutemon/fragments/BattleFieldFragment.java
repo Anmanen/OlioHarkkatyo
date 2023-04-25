@@ -25,6 +25,8 @@ import com.example.lutemon.activities.TransferLutemonsActivity;
 import com.example.lutemon.domain.Lutemon;
 import com.example.lutemon.domain.Storage;
 
+import java.util.ArrayList;
+
 
 public class BattleFieldFragment extends Fragment {
 
@@ -32,7 +34,7 @@ public class BattleFieldFragment extends Fragment {
     private RadioGroup radioGroupBattle;
     private Button transferFromBattle;
 
-    private boolean isFound;
+    private boolean isFound = false;
 
     public BattleFieldFragment() {
         // Required empty public constructor
@@ -62,6 +64,7 @@ public class BattleFieldFragment extends Fragment {
             public void onClick(View view) {
                 int amount = linearLayoutBattle.getChildCount();
                 Place transferPlace = Place.BATTLEFIELD;
+                ArrayList<Lutemon> fighters = new ArrayList<>();
                 int fighterCounter = 0;
 
                 switch (radioGroupBattle.getCheckedRadioButtonId()){
@@ -74,17 +77,35 @@ public class BattleFieldFragment extends Fragment {
                     case R.id.rbFightToHome:
                         transferPlace = Place.HOME;
                 }
+
+                if (transferPlace == Place.FIGHTING){
+                    for (int i = 0; i<amount; i++ ){
+                        CheckBox cb = (CheckBox)linearLayoutBattle.getChildAt(i);
+                        if (cb.isChecked()){
+                            fighterCounter++;
+                        }
+                    }
+                    if (fighterCounter == 2) {
+                        for (int i = 0; i < amount; i++) {
+                            CheckBox cb = (CheckBox) linearLayoutBattle.getChildAt(i);
+                            if (cb.isChecked()) {
+                                Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
+                                isFound = true;
+                            }
+                        }
+                    } else {
+                        Toast.makeText(getActivity(),"Valitse kaksi Lutemonia",Toast.LENGTH_SHORT).show();
+                    }
+                }
+
                 for (int i = 0; i<amount; i++){
                     CheckBox cb = (CheckBox)linearLayoutBattle.getChildAt(i);
-                    if ((cb.isChecked()) && transferPlace == Place.FIGHTING){
-                        fighterCounter++;
-                        Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
-                        isFound = true;
-                    } else if ((cb.isChecked()) && transferPlace == Place.HOME){
+
+                    if ((cb.isChecked()) && transferPlace == Place.HOME){
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
                         Storage.getInstance().getLutemon(cb.getId()).setHealth(Storage.getInstance().getLutemon(cb.getId()).getMaxHealth());
                         isFound = true;
-                    } else if (cb.isChecked()){
+                    } else if ((cb.isChecked()) && transferPlace == Place.TRAININGFIELD){
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
                         isFound = true;
                     }
@@ -103,14 +124,10 @@ public class BattleFieldFragment extends Fragment {
                     intent.putExtra("position", 0);
                     startActivity(intent);
 
-                } else if (isFound){
-                    if (fighterCounter == 2) {
-                        clearSelections();
-                        Intent intent = new Intent(getActivity(), FightActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(getActivity(),"Valitse kaksi Lutemonia",Toast.LENGTH_SHORT).show();
-                    }
+                } else if (transferPlace == Place.FIGHTING && isFound){
+                    clearSelections();
+                    Intent intent = new Intent(getActivity(), FightActivity.class);
+                    startActivity(intent);
                 }
 
             }
