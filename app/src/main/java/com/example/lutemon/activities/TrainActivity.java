@@ -60,8 +60,9 @@ public class TrainActivity extends AppCompatActivity {
         }
     }
 
-    public void backToHome(View view){
+    public void backToTrainField(View view){
         Intent intent = new Intent(this,TransferLutemonsActivity.class);
+        intent.putExtra("position", 1);
         startActivity(intent);
     }
 

@@ -62,8 +62,9 @@ public class FightActivity extends AppCompatActivity {
 
     }
 
-    public void backToHome(View view){
+    public void backToBattleField(View view){
         Intent intent = new Intent(this,TransferLutemonsActivity.class);
+        intent.putExtra("position", 2);
         startActivity(intent);
     }
 

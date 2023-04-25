@@ -18,6 +18,7 @@ public class Storage {
     protected String name;
     protected Lutemon lutemon;
     private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
+    private HashMap<Integer, Lutemon> lutemonsToLoad = new HashMap<>();
 
     private static Storage storage;
 
@@ -36,6 +37,7 @@ public class Storage {
 
     public void addLutemon(int key, Lutemon lutemon){
         lutemons.put(key, lutemon);
+        lutemonsToLoad.put(key, lutemon);
     }
 
     public HashMap<Integer, Lutemon> getLutemons(){
@@ -86,7 +88,7 @@ public class Storage {
     public void saveLutemons(Context context)  {
         try {
             ObjectOutputStream writer = new ObjectOutputStream(context.openFileOutput(LUTEMONDATA, Context.MODE_PRIVATE));
-            writer.writeObject(lutemons);
+            writer.writeObject(lutemonsToLoad);
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
