@@ -1,5 +1,7 @@
-package com.example.lutemon;
+package com.example.lutemon.domain;
 
+import com.example.lutemon.Place;
+import com.example.lutemon.R;
 import com.example.lutemon.domain.Lutemon;
 import com.example.lutemon.domain.Storage;
 import com.example.lutemon.domain.White;

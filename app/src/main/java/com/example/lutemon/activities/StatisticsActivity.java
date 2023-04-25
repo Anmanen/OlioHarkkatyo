@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.lutemon.BattleField;
+import com.example.lutemon.domain.BattleField;
 import com.example.lutemon.R;
 import com.example.lutemon.domain.Lutemon;
 import com.example.lutemon.domain.Storage;

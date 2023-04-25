@@ -10,13 +10,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.lutemon.BattleField;
+import com.example.lutemon.domain.BattleField;
 import com.example.lutemon.Place;
 import com.example.lutemon.R;
 import com.example.lutemon.domain.Lutemon;

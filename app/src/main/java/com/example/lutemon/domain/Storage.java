@@ -2,6 +2,8 @@ package com.example.lutemon.domain;
 
 import android.content.Context;
 
+import com.example.lutemon.LutemonLoadingError;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -73,15 +75,17 @@ public class Storage {
         return lutemonList;
     }
 
-    public void loadLutemons(Context context) throws FileNotFoundException {
+    public void loadLutemons(Context context) throws LutemonLoadingError {
         try {
             ObjectInputStream reader = new ObjectInputStream(context.openFileInput(LUTEMONDATA));
             lutemons = (HashMap<Integer, Lutemon>) reader.readObject();
             reader.close();
+        } catch (FileNotFoundException e){
+            throw new LutemonLoadingError(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new LutemonLoadingError(e);
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new LutemonLoadingError(e);
         }
     }
 

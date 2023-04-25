@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.lutemon.LutemonLoadingError;
 import com.example.lutemon.R;
 import com.example.lutemon.domain.Storage;
 
@@ -36,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             Storage.getInstance().loadLutemons(this);
             Toast.makeText(this, "Lutemonit ladattu", Toast.LENGTH_SHORT).show();
-        } catch (FileNotFoundException e){
+        } catch (LutemonLoadingError e){
             Toast.makeText(this, "Lutemoneja ei ole vielä tallennettu, lisää Lutemoneja ensin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
     public void openListLutemonView(View view){
