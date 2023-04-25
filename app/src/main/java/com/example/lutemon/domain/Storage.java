@@ -4,16 +4,13 @@ import android.content.Context;
 
 import com.example.lutemon.LutemonLoadingError;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Comparator;
 import java.util.List;
 
 public class Storage {
@@ -26,10 +23,7 @@ public class Storage {
 
     private static final String LUTEMONDATA = "lutemondata.data";
 
-    private boolean isSavedData;
-
     private Storage(){
-        this.isSavedData = false;
     }
 
     public static Storage getInstance(){

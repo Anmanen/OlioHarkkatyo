@@ -16,13 +16,7 @@ public class TrainingField {
         this.trainers = trainers;
     }
 
-    public ArrayList<Lutemon> getTrainers() {
-        return trainers;
-    }
 
-    public void setTrainers(ArrayList<Lutemon> trainers) {
-        this.trainers = trainers;
-    }
 
     public void train(){
         for (Lutemon l : trainers){
