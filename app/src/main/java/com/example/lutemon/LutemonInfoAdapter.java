@@ -38,7 +38,24 @@ public class LutemonInfoAdapter extends RecyclerView.Adapter<LutemonInfoHolder> 
         holder.defence.setText(String.valueOf(lutemonHashMap.get(position).getDefence()));
         holder.health.setText(String.valueOf(lutemonHashMap.get(position).getHealth()) + "/" + String.valueOf(lutemonHashMap.get(position).getMaxHealth()));
         holder.experience.setText(String.valueOf((lutemonHashMap.get(position).getExperience())));
-        holder.place.setText(String.valueOf(lutemonHashMap.get(position).getPlace()));
+        switch (lutemonHashMap.get(position).getPlace()){
+            case HOME:
+                holder.place.setText("Kotona");
+                break;
+            case TRAININGFIELD:
+                holder.place.setText("Treenikentällä");
+                break;
+            case TRAINING:
+                holder.place.setText("Treenaamassa");
+                break;
+            case BATTLEFIELD:
+                holder.place.setText("Taistelukentällä");
+                break;
+            case FIGHTING:
+                holder.place.setText("Taistelemassa");
+                break;
+        }
+
     }
 
     @Override
