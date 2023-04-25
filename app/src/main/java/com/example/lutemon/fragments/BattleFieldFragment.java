@@ -80,6 +80,10 @@ public class BattleFieldFragment extends Fragment {
                         fighterCounter++;
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
                         isFound = true;
+                    } else if ((cb.isChecked()) && transferPlace == Place.HOME){
+                        Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
+                        Storage.getInstance().getLutemon(cb.getId()).setHealth(Storage.getInstance().getLutemon(cb.getId()).getMaxHealth());
+                        isFound = true;
                     } else if (cb.isChecked()){
                         Storage.getInstance().getLutemon(cb.getId()).setPlace(transferPlace);
                         isFound = true;
