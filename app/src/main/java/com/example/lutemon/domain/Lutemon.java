@@ -27,8 +27,11 @@ public abstract class Lutemon implements Serializable {
         this.name = name;
         this.color = color;
         this.place = Place.HOME;
-        this.id = idCounter;
-        idCounter++;
+        if (Storage.getInstance().getLutemons().size() == 0){
+            this.id = 0;
+        } else {
+            this.id = Storage.getInstance().getLutemons().size();
+        }
     }
 
     public abstract int getMaxHealth();
