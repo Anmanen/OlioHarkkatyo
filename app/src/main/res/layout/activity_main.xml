@@ -10,18 +10,20 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="LutemonFighter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAddLutemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:onClick="openAddLutemonView"
         android:text="Lisää Lutemon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +34,7 @@
         android:id="@+id/btnLoadLutemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="40dp"
         android:onClick="loadSavedLutemons"
         android:text="Lataa Lutemonit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +45,7 @@
         android:id="@+id/btnListLutemons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="40dp"
         android:onClick="openListLutemonView"
         android:text="Listaa Lutemonit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +56,9 @@
         android:id="@+id/btnTransferLutemons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:onClick="openTransferLutemonsView"
-        android:text="Siirrä Lutemoneja"
+        android:text="Pelaa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnListLutemons" />
@@ -65,11 +67,22 @@
         android:id="@+id/btnStatistics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:onClick="openStatisticsView"
         android:text="Näytä tilastot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTransferLutemons" />
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="exitGame"
+        android:text="Lopeta"
+        app:layout_constraintEnd_toEndOf="@+id/btnStatistics"
+        app:layout_constraintStart_toStartOf="@+id/btnStatistics"
+        app:layout_constraintTop_toBottomOf="@+id/btnStatistics" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
