@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lutemon.BattleField;
@@ -16,13 +17,17 @@ import com.example.lutemon.R;
 import com.example.lutemon.domain.Lutemon;
 import com.example.lutemon.domain.Storage;
 
+import java.util.List;
+
 
 public class StatisticsActivity extends AppCompatActivity {
 
     private TextView battles;
-    private TextView mostWins;
+    private LinearLayout wins;
 
-    private TextView mostDefeats;
+    private LinearLayout defeats;
+
+    private LinearLayout experiences;
 
 
     @Override
@@ -33,16 +38,39 @@ public class StatisticsActivity extends AppCompatActivity {
         battles = findViewById(R.id.txtBattles);
         battles.setText(String.valueOf(BattleField.getBattleCounter()));
 
-        mostWins = findViewById(R.id.txtMostWins);
-        Lutemon winner = Storage.getInstance().listLutemonsByWins();
-        mostWins.setText(winner.getName() + " " + winner.getColor() + ": " + winner.getWins());
+        wins = findViewById(R.id.llWins);
+        List<Lutemon> winners = Storage.getInstance().listLutemonsByWins();
 
-        mostDefeats = findViewById(R.id.txtMostDefeats);
-        Lutemon loser = Storage.getInstance().listLutemonsByDefeats();
-        mostDefeats.setText(loser.getName() + " " + loser.getColor() + ": " + loser.getDefeats());
+        for (Lutemon lutemon : winners){
+            TextView tw = new TextView(this);
+            int battles = lutemon.getWins() + lutemon.getDefeats();
+            tw.setText(lutemon.getName() + ": " + lutemon.getWins() + "/" + String.valueOf(battles));
+            tw.setTextSize(16);
+            wins.addView(tw);
+        }
+
+        defeats = findViewById(R.id.llDefeats);
+        List<Lutemon> losers = Storage.getInstance().listLutemonsByDefeats();
+
+        for (Lutemon lutemon : losers){
+            TextView tw = new TextView(this);
+            int battles = lutemon.getWins() + lutemon.getDefeats();
+            tw.setText(lutemon.getName() + ": " + lutemon.getDefeats() + "/" + String.valueOf(battles));
+            tw.setTextSize(16);
+            defeats.addView(tw);
+        }
+
+        experiences = findViewById(R.id.llExperience);
+        List<Lutemon> exps = Storage.getInstance().listLutemonsByExperience();
+
+        for (Lutemon lutemon : exps){
+            TextView tw = new TextView(this);
+            tw.setText(lutemon.getName() + ": " + lutemon.getExperience());
+            tw.setTextSize(16);
+            experiences.addView(tw);
+        }
 
     }
-
 
 
     @Override

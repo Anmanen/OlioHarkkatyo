@@ -51,19 +51,26 @@ public class Storage {
     }
 
 
-    public Lutemon listLutemonsByWins(){
+    public List<Lutemon> listLutemonsByWins(){
 
         List<Lutemon> lutemonList = new ArrayList<Lutemon>(lutemons.values());
         Collections.sort(lutemonList, (a, b) -> Integer.compare(b.getWins(), a.getWins()));
 
-        return lutemonList.get(0);
+        return lutemonList;
     }
 
-    public Lutemon listLutemonsByDefeats(){
+    public List<Lutemon> listLutemonsByDefeats(){
         List<Lutemon> lutemonList = new ArrayList<Lutemon>(lutemons.values());
         Collections.sort(lutemonList, (a, b) -> Integer.compare(b.getDefeats(), a.getDefeats()));
 
-        return lutemonList.get(0);
+        return lutemonList;
+    }
+
+    public List<Lutemon> listLutemonsByExperience(){
+        List<Lutemon> lutemonList = new ArrayList<Lutemon>(lutemons.values());
+        Collections.sort(lutemonList, (a, b) -> Integer.compare(b.getExperience(), a.getExperience()));
+
+        return lutemonList;
     }
 
     public void loadLutemons(Context context) throws FileNotFoundException {

@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -69,8 +71,8 @@ public class FightActivity extends AppCompatActivity {
     public TextView makeTextView(int id, Lutemon lutemon){
         TextView tw = new TextView(this);
         Lutemon l = Storage.getInstance().getLutemon(id);
-        tw.setText(l.getName() + " h: " + l.getAttack() + " p: " + l.getDefence() +
-                " elämä: " + l.getHealth() + "/" + l.getMaxHealth());
+        tw.setText(l.getName() + " hyökkäys: " + l.getAttack() + " puolustus: " + l.getDefence() +
+                " kokemus: " + l.getExperience() + " elämä: " + l.getHealth() + "/" + l.getMaxHealth());
         return tw;
     }
 
@@ -79,15 +81,23 @@ public class FightActivity extends AppCompatActivity {
         ll.setOrientation(LinearLayout.HORIZONTAL);
         ImageView attacker = new ImageView(this);
         attacker.setImageResource((Integer) action.get(0));
+        TextView attackPower = new TextView(this);
+        attackPower.setText(String.valueOf(action.get(1)));
         ImageView attack = new ImageView(this);
-        attack.setImageResource((Integer)action.get(1));
+        attack.setImageResource((Integer)action.get(2));
         ImageView defender = new ImageView(this);
-        defender.setImageResource((Integer)action.get(2));
+        defender.setImageResource((Integer)action.get(3));
+        TextView defencePower = new TextView(this);
+        defencePower.setText(String.valueOf(action.get(4)));
         TextView result = new TextView(this);
-        result.setText(String.valueOf(action.get(3)));
+        result.setText(String.valueOf(action.get(5)));
+        result.setTypeface(null, Typeface.BOLD);
+        result.setTextSize(16);
         ll.addView(attacker);
+        ll.addView(attackPower);
         ll.addView(attack);
         ll.addView(defender);
+        ll.addView(defencePower);
         ll.addView(result);
         return ll;
     }

@@ -57,16 +57,20 @@ public class BattleField {
             B.setHealth(B.getHealth() - ((A.getAttack() + A.getExperience()) - B.getDefence()));
             ArrayList<Object> temp = new ArrayList<>();
             temp.add(0,A.getImage());
-            temp.add(1, R.drawable.attack);
-            temp.add(2, B.getImage());
-            temp.add(3, " : " + B.getName() + " jäi henkiin " + B.getHealth() + "/" + B.getMaxHealth());
+            temp.add(1, A.getAttack());
+            temp.add(2, R.drawable.attack);
+            temp.add(3, B.getImage());
+            temp.add(4, B.getDefence());
+            temp.add(5, " : " + B.getName() + " jäi henkiin " + B.getHealth() + "/" + B.getMaxHealth());
             actions.put(attackCounter, temp);
         } else {
             ArrayList<Object> temp = new ArrayList<>();
             temp.add(0, A.getImage());
-            temp.add(1, R.drawable.attack);
-            temp.add(2, B.getImage());
-            temp.add(3, " : " + B.getName() + " kuoli");
+            temp.add(1, A.getAttack());
+            temp.add(2, R.drawable.attack);
+            temp.add(3, B.getImage());
+            temp.add(4, B.getDefence());
+            temp.add(5, " : " + B.getName() + " kuoli");
             actions.put(attackCounter, temp);
             B.setHealth(0);
         }
